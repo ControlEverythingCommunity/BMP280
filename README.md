@@ -8,7 +8,7 @@ This Device is available from ControlEverything.com [SKU: BMP280_I2CS]
 
 https://www.controleverything.com/content/Barometer?sku=BMP280_I2CS
 
-This Sample code can be used with Raspberry pi, Arduino and Particle.
+This Sample code can be used with Raspberry pi, Arduino, Particle and Beaglebone Black.
 
 ## Java
 Download and install pi4j library on Raspberry pi. Steps to install pi4j are provided at:
