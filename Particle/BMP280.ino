@@ -10,7 +10,7 @@
 // BMP280 I2C address is 0x76(108)
 #define Addr 0x76
 
-double cTemp = 0, fTemp = 0, pressure = 0;
+double cTemp = 0.0, fTemp = 0.0, pressure = 0.0;
 void setup()
 {
   // Set variable
@@ -151,8 +151,8 @@ void loop()
   double var2 = ((((double)adc_t) / 131072.0 - ((double)dig_T1) / 8192.0) *
                  (((double)adc_t) / 131072.0 - ((double)dig_T1) / 8192.0)) * ((double)dig_T3);
   double t_fine = (long)(var1 + var2);
-  double cTemp = (var1 + var2) / 5120.0;
-  double fTemp = cTemp * 1.8 + 32;
+  cTemp = (var1 + var2) / 5120.0;
+  fTemp = cTemp * 1.8 + 32;
 
   // Pressure offset calculations
   var1 = ((double)t_fine / 2.0) - 64000.0;
@@ -165,11 +165,13 @@ void loop()
   p = (p - (var2 / 4096.0)) * 6250.0 / var1;
   var1 = ((double) dig_P9) * p * p / 2147483648.0;
   var2 = p * ((double) dig_P8) / 32768.0;
-  double pressure = (p + (var1 + var2 + ((double)dig_P7)) / 16.0) / 100 ;
+  pressure = (p + (var1 + var2 + ((double)dig_P7)) / 16.0) / 100 ;
 
   // Output data to dashboard
   Particle.publish("Pressure : ", String(pressure));
+  delay(1000);
   Particle.publish("Temperature in Celsius : ", String(cTemp));
+  delay(1000);
   Particle.publish("Temperature in Fahrenheit : ", String(fTemp));
   delay(1000);
 }
