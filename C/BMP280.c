@@ -30,7 +30,7 @@ void main()
 	char data[24] = {0};
 	if(read(file, data, 24) != 24)
 	{
-		printf("Erorr : Input/output Erorr \n");
+		printf("Error : Input/output Error \n");
 		exit(1);
 	}
 	// Convert the data
@@ -109,7 +109,7 @@ void main()
 	write(file, reg, 1);
 	if(read(file, data, 8) != 8)
 	{
-		printf("Erorr : Input/output Erorr \n");
+		printf("Error : Input/output Error \n");
 		exit(1);
 	}
 	
